@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+NDK=/Applications/android_sdk/ndk/21.4.7075529
 if [[ -z "$NDK" ]]; then
     echo "NDK variable not set, please do 'export NDK=/path/of/ndk-bundle'"
 fi
@@ -59,4 +59,4 @@ echo "### build ffmpeg end ###"
 echo "### gen ffmpeg.so ###"
 cp -rf $PREFIX/ffmpeg/armeabi-v7a/include/* $THIS_DIR/jni/
 cd $THIS_DIR/jni
-$NDK/ndk-build -j$(getconf _NPROCESSORS_ONLN)
+arch -x86_64 /bin/bash $NDK/ndk-build -j$(getconf _NPROCESSORS_ONLN)

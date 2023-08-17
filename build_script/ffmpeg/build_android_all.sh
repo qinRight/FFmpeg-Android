@@ -16,6 +16,76 @@ echo "THIS_DIR=$THIS_DIR"
 cd $FFMPEG_DIR
 git clean -fdx
 
+MODULES="\
+--enable-gpl \
+--enable-libx264"
+
+FFMPEG_NORMAL_CONFIG = " --enable-zlib \
+    --enable-static \
+    --disable-shared \
+    --disable-symver \
+    --disable-doc \
+    --disable-htmlpages \
+    --disable-manpages \
+    --disable-podpages \
+    --disable-txtpages \
+    --disable-ffplay \
+    --disable-ffmpeg \
+    --disable-ffprobe \
+    --disable-ffserver \
+    --disable-avdevice \
+    --disable-bsfs \
+    --disable-devices \
+    --disable-protocols \
+    --enable-zlib \
+    --enable-protocol=file \
+    --enable-protocol=pipe \
+    --enable-protocol=concat \
+    --disable-parsers \
+    --enable-parser=h264 \
+    --enable-parser=aac \
+    --disable-demuxers \
+    --enable-demuxer=mov \
+    --enable-demuxer=mp3 \
+    --enable-demuxer=aac \
+    --enable-demuxer=mpegts \
+    --enable-demuxer=image2 \
+    --disable-decoders \
+    --enable-decoder=aac \
+    --enable-decoder=h264 \
+    --enable-decoder=hevc \
+    --enable-decoder=mp3 \
+    --enable-decoder=png \
+    --enable-decoder=mjpeg \
+    --disable-muxers \
+    --enable-muxer=mp4 \
+    --enable-muxer=mov \
+    --enable-muxer=mp3 \
+    --enable-muxer=mpegts \
+    --enable-muxer=image2 \
+    --enable-muxer=hevc \
+    --enable-demuxer=hevc \
+    --enable-parser=hevc \
+    --disable-encoders \
+    --enable-encoder=aac \
+    --enable-encoder=libx264 \
+    --enable-encoder=png \
+    --enable-encoder=mjpeg \
+    --enable-gpl \
+    --disable-network \
+    --enable-hwaccels \
+    --disable-avfilter \
+    --enable-asm \
+    --enable-version3 \
+    ${MODULES} \
+    --disable-doc \
+    --enable-neon \
+    --disable-filters \
+    --enable-pic \
+    --enable-yasm \
+    --disable-linux-perf"
+
+
 bash $THIS_DIR/build_android_armeabi_v7a.sh "$FFMPEG_DIR"
 
 # Build arm64 v8a
